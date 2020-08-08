@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>canvas实现画板</title>
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    html,body{
+        width: 100%;
+        height: 100%;
+    }
+    .wrapper{
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+    .wrapper #board{
+        width: 600px;
+        height: 300px;
+        border: 5px solid #999999;
+        border-radius: 10px;
+        margin: 10px 0 0 10px;
+        cursor: pointer;
+    }
+    .wrapper .btn{
+        width: 610px;
+        height: 35px;
+        margin:10px 0 0 10px;
+        position: relative;
+    }
+    .wrapper .btn input{
+        border: none;
+        outline: none;
+        width: 100px; 
+        height: 35px;
+        vertical-align: middle;
+        margin-right: 10px;
+        border-radius: 10px;
+        background-color: #cccccc;
+    }
+    /* ::-webkit-color-swatch-swapper是Chrome浏览器为type=“color”的input提供的一个伪类，用来设置外边框的样式*/
+    .wrapper .btn input[type='color']::-webkit-color-swatch-swapper{
+        padding: 0;
+    }
+    /* ::-webkit-color-swatch是Chrome浏览器为type=“color”的input提供的一个伪类，用来设置内边框的样式*/
+    .wrapper .btn input[type='color']::-webkit-color-swatch{
+        border-radius: 10px;
+        border: 3px solid #cccccc;
+    }
+    .wrapper .btn input[type='range']{
+        padding: 0 5px;
+        -webkit-appearance: none;/*清除默认样式*/
+        background-color: #cccccc;
+    }
+    /* ::-webkit-slider-thumb是Chrome浏览器为type=“range”的input提供的一个伪类，用来设置活动轨道的样式,必须配合::-webkit-slider-runnable-track使用，否则无效*/
+    .wrapper .btn input[type='range']::-webkit-slider-thumb{
+        -webkit-appearance: none;/*清除默认样式*/
+        width: 10px;
+        height: 10px;
+        background-color: #ffffff;
+        border-radius: 50%;
+        margin-top: -4px;
+    }
+    
+    /* 设置滑动小圆点的样式 */
+    .wrapper .btn input[type='range']::-webkit-slider-runnable-track{
+        width: 90px;
+        height: 2px;
+        background-color: #666;
+    }
+</style>
+<body>
+<div class="wrapper">
+    <canvas id="board" width="600px" height="300px">您的浏览器不支持 HTML5 canvas 标签。</canvas>
+    <div class="btn">
+        <input type="color" class="color">
+        <input type="button" value="清屏" class="clear">
+        <input type="button" value="撤销" class="reset">
+        <input type="button" value="橡皮擦" class="eraser">
+        <input type="range" class="rang" min="2" max="20" value="5">
+    </div>
+</div>
+
+<script>
+var c=$("#board")[0] //获取dom对象
+console.log(c);
+var ctx=c.getContext("2d");//创建画布对象
+console.log(ctx);
+var x = c.offset();
+console.log(x);
+var left = c.offsetLeft;//获取画布的left值
+console.log(left);
+var top = c.offsetTop;//获取画布的top值
+console.log(top);
+
+var bool = false;
+
+
+
+// for (var i=0;i<imgData.data.length;i+=4)
+// {
+// 	imgData.data[i+0]=255;
+// 	imgData.data[i+1]=0;
+// 	imgData.data[i+2]=0;
+// 	imgData.data[i+3]=255;
+// }
+// ctx.putImageData(imgData,10,10);
+</script>
+
+</body>
+</html>
